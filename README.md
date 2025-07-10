@@ -29,3 +29,66 @@ If you are satisfied with the result, you can finally build the project for rele
 ```
 npm run build
 ```
+
+## OTP Authentication Setup
+
+This app uses Twilio Verify API for OTP authentication. To set up the backend:
+
+### Backend Requirements
+
+Create a backend server with the following endpoints:
+
+1. **POST /send-otp**
+   ```json
+   {
+     "phone": "+91XXXXXXXXXX"
+   }
+   ```
+   Response:
+   ```json
+   {
+     "success": true,
+     "message": "OTP sent successfully"
+   }
+   ```
+
+2. **POST /check-otp**
+   ```json
+   {
+     "phone": "+91XXXXXXXXXX",
+     "code": "123456"
+   }
+   ```
+   Response:
+   ```json
+   {
+     "valid": true,
+     "message": "OTP verified successfully"
+   }
+   ```
+
+### Environment Configuration
+
+1. Copy `.env.example` to `.env`
+2. Update `REACT_APP_API_BASE_URL` with your backend URL
+3. For local testing with ngrok:
+   ```bash
+   ngrok http 3001
+   ```
+   Then update the URL in `.env`
+
+### Twilio Setup
+
+1. Create a Twilio account
+2. Get your Account SID, Auth Token, and Verify Service SID
+3. Configure these in your backend environment
+
+### Features
+
+- ✅ Country code selection
+- ✅ 6-digit OTP input
+- ✅ Automatic OTP verification
+- ✅ Resend OTP functionality
+- ✅ Error handling and user feedback
+- ✅ Loading states
+- ✅ Mobile responsive design

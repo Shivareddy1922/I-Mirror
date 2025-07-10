@@ -10,7 +10,7 @@ interface NumericKeyboardSectionProps {
 export const NumericKeyboardSection = ({ 
   otp = "", 
   setOtp = () => {}, 
-  maxLength = 4 
+  maxLength = 6 
 }: NumericKeyboardSectionProps): JSX.Element => {
   // Define keyboard keys data for mapping
   const numericKeys = [

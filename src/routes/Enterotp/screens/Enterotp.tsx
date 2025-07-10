@@ -1,7 +1,9 @@
 import { ArrowLeftIcon } from "lucide-react";
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useOtp } from "../../../hooks/useOtp";
 import { Button } from "../components/ui/button";
+import { MessageSection } from "./sections/MessageSection";
 import { NumericKeyboardSection } from "./sections/NumericKeyboardSection";
 import { OtpInputSection } from "./sections/OtpInputSection";
 
@@ -10,8 +12,12 @@ export const Enterotp = (): JSX.Element => {
   const [timer, setTimer] = useState<number>(30);
   const [isResendActive, setIsResendActive] = useState<boolean>(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const { isLoading, error, success, verifyOtp, sendOtp, clearMessages } = useOtp();
   
-  const isOtpComplete = otp.length === 4;
+  // Get phone number from navigation state
+  const phoneNumber = location.state?.phoneNumber || "";
+  const isOtpComplete = otp.length === 6; // Changed to 6 digits for Twilio
 
   // Timer countdown effect
   useEffect(() => {
@@ -31,24 +37,38 @@ export const Enterotp = (): JSX.Element => {
   }, [timer]);
 
   const handleBackClick = () => {
+    clearMessages();
     navigate('/login');
   };
 
-  const handleContinue = () => {
+  const handleContinue = async () => {
     if (isOtpComplete) {
-      navigate('/setup-profile');
+      const isValid = await verifyOtp(phoneNumber, otp);
+      if (isValid) {
+        // Small delay to show success message
+        setTimeout(() => {
+          navigate('/setup-profile');
+        }, 1500);
+      }
     }
   };
 
-  const handleResendCode = () => {
+  const handleResendCode = async () => {
     if (isResendActive) {
-      setTimer(30);
-      setIsResendActive(false);
-      // Reset OTP
-      setOtp("");
+      const success = await sendOtp(phoneNumber);
+      if (success) {
+        setTimer(30);
+        setIsResendActive(false);
+        setOtp("");
+        clearMessages();
+      }
     }
   };
 
+  const handleOtpChange = (newOtp: string) => {
+    clearMessages();
+    setOtp(newOtp);
+  };
   return (
     <div className="bg-white flex flex-row justify-center items-center w-full min-h-screen">
       <div className="bg-white w-full max-w-[390px] min-h-screen sm:h-[844px] relative">
@@ -81,17 +101,22 @@ export const Enterotp = (): JSX.Element => {
 
             {/* OTP Input Section */}
             <div className="w-full max-w-[327px] mx-auto mb-6">
-              <OtpInputSection />
+              <OtpInputSection phoneNumber={phoneNumber} />
+            </div>
+
+            {/* Message Section for success/error */}
+            <div className="w-full max-w-[327px] mx-auto mb-4">
+              <MessageSection error={error} success={success} />
             </div>
 
             {/* OTP Input Boxes (Visual representation) */}
             <div className="flex justify-center gap-[25px] mb-12 w-full">
-              {[0, 1, 2, 3].map((index) => (
+              {[0, 1, 2, 3, 4, 5].map((index) => (
                 <div
                   key={`otp-box-${index}`}
-                  className={`w-[50px] h-[50px] bg-white rounded-[10px] border border-solid ${
+                  className={`w-[40px] h-[40px] bg-white rounded-[10px] border border-solid ${
                     otp.length > index ? 'border-[#74a4ee]' : 'border-[#e1e1e1]'
-                  } flex items-center justify-center text-2xl font-bold`}
+                  } flex items-center justify-center text-lg font-bold`}
                 >
                   {otp[index] || ''}
                 </div>
@@ -101,13 +126,13 @@ export const Enterotp = (): JSX.Element => {
             {/* Continue Button */}
             <Button 
               className={`w-full max-w-[327px] h-12 mx-auto mb-6 bg-[#74a4ee] rounded-[48px] flex items-center justify-center ${
-                !isOtpComplete ? 'opacity-50 cursor-not-allowed' : ''
+                !isOtpComplete || isLoading ? 'opacity-50 cursor-not-allowed' : ''
               }`}
-              disabled={!isOtpComplete}
+              disabled={!isOtpComplete || isLoading}
               onClick={handleContinue}
             >
               <span className="text-white font-regular-none-medium font-[number:var(--regular-none-medium-font-weight)] text-[length:var(--regular-none-medium-font-size)] tracking-[var(--regular-none-medium-letter-spacing)] leading-[var(--regular-none-medium-line-height)] [font-style:var(--regular-none-medium-font-style)]">
-                Verify OTP
+                {isLoading ? 'Verifying...' : 'Verify OTP'}
               </span>
             </Button>
 
@@ -116,13 +141,13 @@ export const Enterotp = (): JSX.Element => {
               <Button
                 variant="ghost"
                 className={`w-full max-w-[327px] h-12 mx-auto rounded-[48px] flex items-center justify-center ${
-                  !isResendActive ? 'opacity-50 cursor-not-allowed' : ''
+                  !isResendActive || isLoading ? 'opacity-50 cursor-not-allowed' : ''
                 }`}
-                disabled={!isResendActive}
+                disabled={!isResendActive || isLoading}
                 onClick={handleResendCode}
               >
                 <span className="text-primarybase font-regular-none-medium font-[number:var(--regular-none-medium-font-weight)] text-[length:var(--regular-none-medium-font-size)] tracking-[var(--regular-none-medium-letter-spacing)] leading-[var(--regular-none-medium-line-height)] [font-style:var(--regular-none-medium-font-style)]">
-                  Resend code
+                  {isLoading ? 'Sending...' : 'Resend code'}
                 </span>
               </Button>
               
@@ -136,7 +161,7 @@ export const Enterotp = (): JSX.Element => {
 
           {/* Numeric Keyboard Section - fixed to bottom */}
           <div className="w-full fixed sm:absolute bottom-0 left-0 sm:left-auto">
-            <NumericKeyboardSection otp={otp} setOtp={setOtp} maxLength={4} />
+            <NumericKeyboardSection otp={otp} setOtp={handleOtpChange} maxLength={6} />
           </div>
         </div>
       </div>

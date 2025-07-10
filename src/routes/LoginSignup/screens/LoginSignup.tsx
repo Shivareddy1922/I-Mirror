@@ -1,30 +1,44 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useOtp } from "../../../hooks/useOtp";
 import { Button } from "../components/ui/button";
 import { Card, CardContent } from "../components/ui/card";
 import { ContinueSection } from "./sections/ContinueSection";
 import { HeaderSection } from "./sections/HeaderSection";
 import { InputFieldsSection } from "./sections/InputFieldsSection";
+import { MessageSection } from "./sections/MessageSection";
 
 export const LoginSignup = (): JSX.Element => {
   const [phoneNumber, setPhoneNumber] = useState<string>("");
+  const [countryCode, setCountryCode] = useState<string>("+91");
   const navigate = useNavigate();
+  const { isLoading, error, success, sendOtp, clearMessages } = useOtp();
   
   const isPhoneNumberValid = phoneNumber.length === 10;
+  const fullPhoneNumber = `${countryCode}${phoneNumber}`;
 
   const handleContinue = () => {
-    if (isPhoneNumberValid) {
-      navigate('/enterotp');
+    if (isPhoneNumberValid && !isLoading) {
+      handleSendOtp();
     }
   };
 
+  const handleSendOtp = async () => {
+    const success = await sendOtp(fullPhoneNumber);
+    if (success) {
+      // Navigate to OTP screen with phone number
+      navigate('/enterotp', { state: { phoneNumber: fullPhoneNumber } });
+    }
+  };
   const handleKeypadInput = (digit: string) => {
+    clearMessages();
     if (phoneNumber.length < 10) {
       setPhoneNumber(prev => prev + digit);
     }
   };
 
   const handleKeypadDelete = () => {
+    clearMessages();
     if (phoneNumber.length > 0) {
       setPhoneNumber(prev => prev.slice(0, -1));
     }
@@ -96,7 +110,14 @@ export const LoginSignup = (): JSX.Element => {
                 </div>
 
                 {/* Input fields */}
-                <InputFieldsSection phoneNumber={phoneNumber} />
+                <InputFieldsSection 
+                  phoneNumber={phoneNumber} 
+                  countryCode={countryCode}
+                  setCountryCode={setCountryCode}
+                />
+
+                {/* Message Section for success/error */}
+                <MessageSection error={error} success={success} />
 
                 {/* SMS verification message */}
                 <div className="w-full max-w-[327px] mx-auto mt-4 px-4 sm:px-0 font-tiny-normal-regular text-inklight text-[length:var(--tiny-normal-regular-font-size)] tracking-[var(--tiny-normal-regular-letter-spacing)] leading-[var(--tiny-normal-regular-line-height)]">
@@ -107,11 +128,11 @@ export const LoginSignup = (): JSX.Element => {
                 {/* Continue button */}
                 <div className="w-full max-w-[327px] h-12 mx-auto mt-8 mb-6 px-4 sm:px-0">
                   <Button 
-                    className={`w-full h-full bg-[#74a4ee] rounded-[48px] text-skywhite font-regular-none-medium text-[length:var(--regular-none-medium-font-size)] tracking-[var(--regular-none-medium-letter-spacing)] leading-[var(--regular-none-medium-line-height)] ${!isPhoneNumberValid ? 'opacity-50' : ''}`}
+                    className={`w-full h-full bg-[#74a4ee] rounded-[48px] text-skywhite font-regular-none-medium text-[length:var(--regular-none-medium-font-size)] tracking-[var(--regular-none-medium-letter-spacing)] leading-[var(--regular-none-medium-line-height)] ${!isPhoneNumberValid || isLoading ? 'opacity-50' : ''}`}
                     onClick={handleContinue}
-                    disabled={!isPhoneNumberValid}
+                    disabled={!isPhoneNumberValid || isLoading}
                   >
-                    Continue
+                    {isLoading ? 'Sending OTP...' : 'Continue'}
                   </Button>
                 </div>
 

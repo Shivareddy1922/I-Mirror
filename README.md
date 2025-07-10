@@ -70,7 +70,7 @@ Create a backend server with the following endpoints:
 ### Environment Configuration
 
 1. Copy `.env.example` to `.env`
-2. Update `REACT_APP_API_BASE_URL` with your backend URL
+2. Update `VITE_API_BASE_URL` with your backend URL
 3. For local testing with ngrok:
    ```bash
    ngrok http 3001

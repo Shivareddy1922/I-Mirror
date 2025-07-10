@@ -26,6 +26,9 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001
 export class OtpService {
   static async sendOtp(phone: string): Promise<SendOtpResponse> {
     try {
+      console.log('Attempting to send OTP to:', phone);
+      console.log('API Base URL:', API_BASE_URL);
+      
       const response = await fetch(`${API_BASE_URL}/send-otp`, {
         method: 'POST',
         headers: {
@@ -46,15 +49,19 @@ export class OtpService {
       };
     } catch (error) {
       console.error('Error sending OTP:', error);
+      console.error('API_BASE_URL being used:', API_BASE_URL);
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Failed to send OTP',
+        error: error instanceof Error ? error.message : 'Failed to send OTP. Please check if the backend server is running.',
       };
     }
   }
 
   static async verifyOtp(phone: string, code: string): Promise<VerifyOtpResponse> {
     try {
+      console.log('Attempting to verify OTP for:', phone);
+      console.log('API Base URL:', API_BASE_URL);
+      
       const response = await fetch(`${API_BASE_URL}/check-otp`, {
         method: 'POST',
         headers: {
@@ -75,9 +82,10 @@ export class OtpService {
       };
     } catch (error) {
       console.error('Error verifying OTP:', error);
+      console.error('API_BASE_URL being used:', API_BASE_URL);
       return {
         valid: false,
-        error: error instanceof Error ? error.message : 'Failed to verify OTP',
+        error: error instanceof Error ? error.message : 'Failed to verify OTP. Please check if the backend server is running.',
       };
     }
   }

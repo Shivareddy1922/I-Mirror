@@ -1,4 +1,5 @@
 // OTP Service for Twilio Verify API integration
+
 export interface SendOtpRequest {
   phone: string;
 }
@@ -20,60 +21,60 @@ export interface VerifyOtpResponse {
   error?: string;
 }
 
-// Base URL for your backend API - update this with your actual backend URL
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || `${window.location.origin}/api`;
+// ✅ Use relative path for Bolt.ai (no localhost!)
+const API_BASE_URL = "";
 
 export class OtpService {
   static async sendOtp(phone: string): Promise<SendOtpResponse> {
     try {
-      console.log('Attempting to send OTP to:', phone);
-      console.log('API Base URL:', API_BASE_URL);
-      
+      console.log("Sending OTP to:", phone);
+
       const response = await fetch(`${API_BASE_URL}/send-otp`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ phone }),
       });
 
       const data = await response.json();
-      
+
       if (!response.ok) {
-        throw new Error(data.error || 'Failed to send OTP');
+        throw new Error(data.error || "Failed to send OTP");
       }
 
       return {
         success: true,
-        message: data.message || 'OTP sent successfully',
+        message: data.message || "OTP sent successfully",
       };
     } catch (error) {
-      console.error('Error sending OTP:', error);
-      console.error('API_BASE_URL being used:', API_BASE_URL);
+      console.error("Error sending OTP:", error);
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Failed to send OTP. Please check if the backend server is running.',
+        error:
+          error instanceof Error
+            ? error.message
+            : "Failed to send OTP. Check server availability.",
       };
     }
   }
 
   static async verifyOtp(phone: string, code: string): Promise<VerifyOtpResponse> {
     try {
-      console.log('Attempting to verify OTP for:', phone);
-      console.log('API Base URL:', API_BASE_URL);
-      
+      console.log("Verifying OTP for:", phone);
+
       const response = await fetch(`${API_BASE_URL}/check-otp`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ phone, code }),
       });
 
       const data = await response.json();
-      
+
       if (!response.ok) {
-        throw new Error(data.error || 'Failed to verify OTP');
+        throw new Error(data.error || "Failed to verify OTP");
       }
 
       return {
@@ -81,11 +82,13 @@ export class OtpService {
         message: data.message,
       };
     } catch (error) {
-      console.error('Error verifying OTP:', error);
-      console.error('API_BASE_URL being used:', API_BASE_URL);
+      console.error("Error verifying OTP:", error);
       return {
         valid: false,
-        error: error instanceof Error ? error.message : 'Failed to verify OTP. Please check if the backend server is running.',
+        error:
+          error instanceof Error
+            ? error.message
+            : "Failed to verify OTP. Check server availability.",
       };
     }
   }

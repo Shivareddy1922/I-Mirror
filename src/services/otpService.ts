@@ -21,7 +21,7 @@ export interface VerifyOtpResponse {
 }
 
 // Base URL for your backend API - update this with your actual backend URL
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:3001';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001';
 
 export class OtpService {
   static async sendOtp(phone: string): Promise<SendOtpResponse> {

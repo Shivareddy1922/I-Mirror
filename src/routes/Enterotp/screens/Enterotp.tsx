@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useOtp } from "../../../hooks/useOtp";
 import { Button } from "../components/ui/button";
-import { MessageSection } from "./sections/MessageSection";
+import { MessageSection } from "./sections/MessageSection.tsx";
 import { NumericKeyboardSection } from "./sections/NumericKeyboardSection";
 import { OtpInputSection } from "./sections/OtpInputSection";
 

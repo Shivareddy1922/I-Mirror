@@ -80,31 +80,31 @@
       }
     },
     {
-      "id": "src/routes/LoginSignup/screens/LoginSignup.tsx:17:6-to-src/routes/Enterotp/screens/Enterotp.tsx",
+      "id": "src/routes/LoginSignup/screens/LoginSignup.tsx:30:6-to-src/routes/Enterotp/screens/Enterotp.tsx",
       "source": "src/routes/LoginSignup/screens/LoginSignup.tsx",
       "target": "src/routes/Enterotp/screens/Enterotp.tsx",
       "data": {
         "viaRoute": "/enterotp",
         "trigger": {
-          "element": "navigate('/enterotp')",
-          "line": 17,
-          "endLine": 17,
+          "element": "navigate('/enterotp', { state: { phoneNumber: fullPhoneNumber } })",
+          "line": 30,
+          "endLine": 30,
           "column": 6,
-          "endColumn": 27,
+          "endColumn": 72,
           "sourceFile": "src/routes/LoginSignup/screens/LoginSignup.tsx"
         }
       }
     },
     {
-      "id": "src/routes/Enterotp/screens/Enterotp.tsx:34:4-to-src/routes/LoginSignup/screens/LoginSignup.tsx",
+      "id": "src/routes/Enterotp/screens/Enterotp.tsx:41:4-to-src/routes/LoginSignup/screens/LoginSignup.tsx",
       "source": "src/routes/Enterotp/screens/Enterotp.tsx",
       "target": "src/routes/LoginSignup/screens/LoginSignup.tsx",
       "data": {
         "viaRoute": "/login",
         "trigger": {
           "element": "navigate('/login')",
-          "line": 34,
-          "endLine": 34,
+          "line": 41,
+          "endLine": 41,
           "column": 4,
           "endColumn": 22,
           "sourceFile": "src/routes/Enterotp/screens/Enterotp.tsx"
@@ -112,17 +112,17 @@
       }
     },
     {
-      "id": "src/routes/Enterotp/screens/Enterotp.tsx:39:6-to-src/routes/SetupProfile/screens/SetupProfile.tsx",
+      "id": "src/routes/Enterotp/screens/Enterotp.tsx:50:10-to-src/routes/SetupProfile/screens/SetupProfile.tsx",
       "source": "src/routes/Enterotp/screens/Enterotp.tsx",
       "target": "src/routes/SetupProfile/screens/SetupProfile.tsx",
       "data": {
         "viaRoute": "/setup-profile",
         "trigger": {
           "element": "navigate('/setup-profile')",
-          "line": 39,
-          "endLine": 39,
-          "column": 6,
-          "endColumn": 32,
+          "line": 50,
+          "endLine": 50,
+          "column": 10,
+          "endColumn": 36,
           "sourceFile": "src/routes/Enterotp/screens/Enterotp.tsx"
         }
       }

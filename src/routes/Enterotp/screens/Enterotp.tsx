@@ -50,11 +50,11 @@ export const Enterotp = (): JSX.Element => {
   };
 
   return (
-    <div className="bg-white flex flex-row justify-center items-center w-full h-screen">
-      <div className="bg-white w-[390px] h-[844px] relative">
+    <div className="bg-white flex flex-row justify-center items-center w-full min-h-screen">
+      <div className="bg-white w-full max-w-[390px] min-h-screen sm:h-[844px] relative">
         <div className="w-full h-full bg-[linear-gradient(136deg,rgba(219,234,254,1)_11%,rgba(202,225,254,1)_43%,rgba(252,231,243,1)_100%)] flex flex-col">
           {/* Status Bar */}
-          <div className="w-full h-11 bg-skywhite flex-shrink-0">
+          <div className="w-full h-11 bg-skywhite flex-shrink-0 hidden sm:block">
             <div className="absolute h-4 top-[15px] left-[30px] font-regular-none-medium font-[number:var(--regular-none-medium-font-weight)] text-inkdarkest text-[length:var(--regular-none-medium-font-size)] tracking-[var(--regular-none-medium-letter-spacing)] leading-[var(--regular-none-medium-line-height)] whitespace-nowrap [font-style:var(--regular-none-medium-font-style)]">
               9:41
             </div>
@@ -66,21 +66,21 @@ export const Enterotp = (): JSX.Element => {
 
           {/* Back Button */}
           <button 
-            className="absolute top-[68px] left-[17px] w-9 h-[15px] cursor-pointer z-10"
+            className="absolute top-[20px] sm:top-[68px] left-[17px] w-9 h-[15px] cursor-pointer z-10"
             onClick={handleBackClick}
           >
             <ArrowLeftIcon className="w-full h-full text-inkdarkest" />
           </button>
 
           {/* Main content - aligned to top */}
-          <div className="flex-grow flex flex-col justify-start items-center pt-20">
+          <div className="flex-grow flex flex-col justify-start items-center pt-16 sm:pt-20 px-4 sm:px-0">
             {/* Title */}
-            <h1 className="w-[327px] mx-auto mb-6 font-title-3 font-[number:var(--title-3-font-weight)] text-inkdarkest text-[length:var(--title-3-font-size)] text-center tracking-[var(--title-3-letter-spacing)] leading-[var(--title-3-line-height)] [font-style:var(--title-3-font-style)]">
+            <h1 className="w-full max-w-[327px] mx-auto mb-6 font-title-3 font-[number:var(--title-3-font-weight)] text-inkdarkest text-[length:var(--title-3-font-size)] text-center tracking-[var(--title-3-letter-spacing)] leading-[var(--title-3-line-height)] [font-style:var(--title-3-font-style)]">
               Enter OTP
             </h1>
 
             {/* OTP Input Section */}
-            <div className="w-[327px] mx-auto mb-6">
+            <div className="w-full max-w-[327px] mx-auto mb-6">
               <OtpInputSection />
             </div>
 
@@ -100,7 +100,7 @@ export const Enterotp = (): JSX.Element => {
 
             {/* Continue Button */}
             <Button 
-              className={`w-[327px] h-12 mx-auto mb-6 bg-[#74a4ee] rounded-[48px] flex items-center justify-center ${
+              className={`w-full max-w-[327px] h-12 mx-auto mb-6 bg-[#74a4ee] rounded-[48px] flex items-center justify-center ${
                 !isOtpComplete ? 'opacity-50 cursor-not-allowed' : ''
               }`}
               disabled={!isOtpComplete}
@@ -115,7 +115,7 @@ export const Enterotp = (): JSX.Element => {
             <div className="flex flex-col items-center mb-4">
               <Button
                 variant="ghost"
-                className={`w-[327px] h-12 mx-auto rounded-[48px] flex items-center justify-center ${
+                className={`w-full max-w-[327px] h-12 mx-auto rounded-[48px] flex items-center justify-center ${
                   !isResendActive ? 'opacity-50 cursor-not-allowed' : ''
                 }`}
                 disabled={!isResendActive}
@@ -135,7 +135,7 @@ export const Enterotp = (): JSX.Element => {
           </div>
 
           {/* Numeric Keyboard Section - fixed to bottom */}
-          <div className="w-full absolute bottom-0 left-0">
+          <div className="w-full fixed sm:absolute bottom-0 left-0 sm:left-auto">
             <NumericKeyboardSection otp={otp} setOtp={setOtp} maxLength={4} />
           </div>
         </div>

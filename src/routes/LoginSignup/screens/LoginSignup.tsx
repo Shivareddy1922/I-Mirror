@@ -31,12 +31,12 @@ export const LoginSignup = (): JSX.Element => {
   };
 
   return (
-    <div className="flex flex-row justify-center items-center w-full h-screen bg-white">
-      <div className="w-[390px] h-[844px] overflow-hidden border-2 border-solid border-[#74a4ee] bg-white relative">
+    <div className="flex flex-row justify-center items-center w-full min-h-screen bg-white">
+      <div className="w-full max-w-[390px] min-h-screen sm:h-[844px] overflow-hidden sm:border-2 border-solid border-[#74a4ee] bg-white relative">
         {/* Main background with gradient */}
         <div className="w-full h-full bg-[linear-gradient(136deg,rgba(219,234,254,1)_11%,rgba(202,225,254,1)_43%,rgba(252,231,243,1)_100%)] flex flex-col">
           {/* Status bar */}
-          <div className="w-full h-[47px] bg-white flex-shrink-0">
+          <div className="w-full h-[47px] bg-white flex-shrink-0 hidden sm:block">
             <img
               className="absolute w-[164px] h-[29px] top-px left-[113px]"
               alt="Notch"
@@ -75,14 +75,14 @@ export const LoginSignup = (): JSX.Element => {
           </div>
 
           {/* Main content - aligned to top */}
-          <div className="flex-grow flex flex-col justify-start items-center pt-4">
+          <div className="flex-grow flex flex-col justify-start items-center pt-4 sm:pt-4 px-4 sm:px-0">
             {/* Main content card */}
-            <Card className="w-[388px] mx-auto bg-white shadow-[0px_18px_40px_#0000001a,0px_72px_72px_#00000017,0px_163px_98px_#0000000d,0px_289px_116px_#00000003,0px_452px_127px_transparent] rounded-[43px] border-none">
+            <Card className="w-full max-w-[388px] mx-auto bg-white shadow-[0px_18px_40px_#0000001a,0px_72px_72px_#00000017,0px_163px_98px_#0000000d,0px_289px_116px_#00000003,0px_452px_127px_transparent] rounded-[43px] border-none">
               <CardContent className="p-0 relative">
                 {/* Header with logo */}
                 <div className="w-full h-[93px] relative">
                   <HeaderSection />
-                  <div className="absolute w-[65px] h-[69px] top-0 right-[14px] bg-white opacity-[0.57]">
+                  <div className="absolute w-[65px] h-[69px] top-0 right-[14px] bg-white opacity-[0.57] hidden sm:block">
                     <div className="relative w-[63px] h-[67px] top-0.5">
                       <div className="top-1 left-0 bg-[#9783d305] border-[#74a4ee] absolute w-[34px] h-[54px] rounded-[10px] border-[5px] border-solid" />
                       <div className="top-3.5 left-[17px] border-[#9783d3] absolute w-[34px] h-[54px] rounded-[10px] border-[5px] border-solid" />
@@ -99,13 +99,13 @@ export const LoginSignup = (): JSX.Element => {
                 <InputFieldsSection phoneNumber={phoneNumber} />
 
                 {/* SMS verification message */}
-                <div className="w-[327px] mx-auto mt-4 font-tiny-normal-regular text-inklight text-[length:var(--tiny-normal-regular-font-size)] tracking-[var(--tiny-normal-regular-letter-spacing)] leading-[var(--tiny-normal-regular-line-height)]">
+                <div className="w-full max-w-[327px] mx-auto mt-4 px-4 sm:px-0 font-tiny-normal-regular text-inklight text-[length:var(--tiny-normal-regular-font-size)] tracking-[var(--tiny-normal-regular-letter-spacing)] leading-[var(--tiny-normal-regular-line-height)]">
                   You will receive an SMS verification that may apply message
                   and data rates.
                 </div>
 
                 {/* Continue button */}
-                <div className="w-[327px] h-12 mx-auto mt-8 mb-6">
+                <div className="w-full max-w-[327px] h-12 mx-auto mt-8 mb-6 px-4 sm:px-0">
                   <Button 
                     className={`w-full h-full bg-[#74a4ee] rounded-[48px] text-skywhite font-regular-none-medium text-[length:var(--regular-none-medium-font-size)] tracking-[var(--regular-none-medium-letter-spacing)] leading-[var(--regular-none-medium-line-height)] ${!isPhoneNumberValid ? 'opacity-50' : ''}`}
                     onClick={handleContinue}
@@ -115,13 +115,16 @@ export const LoginSignup = (): JSX.Element => {
                   </Button>
                 </div>
 
-                <ContinueSection />
+                {/* Terms and Privacy Policy */}
+                <div className="w-full max-w-[327px] mx-auto mb-6 px-4 sm:px-0">
+                  <ContinueSection />
+                </div>
               </CardContent>
             </Card>
           </div>
 
           {/* Keypad overlay - fixed to bottom */}
-          <div className="w-full bg-skylight backdrop-blur-[40.77px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(40.77px)_brightness(100%)] absolute bottom-0 left-0">
+          <div className="w-full bg-skylight backdrop-blur-[40.77px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(40.77px)_brightness(100%)] fixed sm:absolute bottom-0 left-0 sm:left-auto">
             <div className="w-full h-[5px] flex justify-center items-center py-4">
               <div className="w-[134px] h-[5px] bg-inkdarkest rounded-[100px]" />
             </div>

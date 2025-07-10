@@ -7,7 +7,7 @@ interface InputFieldsSectionProps {
 
 export const InputFieldsSection = ({ phoneNumber = "" }: InputFieldsSectionProps): JSX.Element => {
   return (
-    <div className="w-full max-w-[327px] mx-auto mt-4">
+    <div className="w-full max-w-[327px] mx-auto mt-4 px-4 sm:px-0">
       <div className="relative w-full h-[50px] bg-skywhite rounded-lg border border-solid border-[#e3e4e5]">
         <div className="flex items-center h-full px-4">
           <div className="flex items-center gap-1 mr-4">

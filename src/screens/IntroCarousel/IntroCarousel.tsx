@@ -87,12 +87,12 @@ export const IntroCarousel = (): JSX.Element => {
   };
 
   return (
-    <div className="bg-white flex flex-row justify-center w-full">
-      <div className="bg-[linear-gradient(136deg,rgba(219,234,254,1)_11%,rgba(202,225,254,1)_43%,rgba(252,231,243,1)_100%)] w-[390px] h-[844px] relative overflow-hidden">
+    <div className="bg-white flex flex-row justify-center w-full min-h-screen">
+      <div className="bg-[linear-gradient(136deg,rgba(219,234,254,1)_11%,rgba(202,225,254,1)_43%,rgba(252,231,243,1)_100%)] w-full max-w-[390px] min-h-screen sm:h-[844px] relative overflow-hidden">
         {/* Carousel Container */}
         <div 
           ref={carouselRef}
-          className="absolute w-full h-[500px] top-[150px] flex overflow-x-auto snap-x snap-mandatory scrollbar-hide"
+          className="absolute w-full h-[500px] top-[100px] sm:top-[150px] flex overflow-x-auto snap-x snap-mandatory scrollbar-hide"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {slides.map((slide, index) => (
@@ -100,7 +100,7 @@ export const IntroCarousel = (): JSX.Element => {
               key={slide.id} 
               className="min-w-full h-full flex-shrink-0 flex justify-center items-start snap-center"
             >
-              <Card className="w-[327px] h-[404px] bg-new-fill-ffffff rounded-[43px] shadow-drop-shadow-radius-24 border-none">
+              <Card className="w-full max-w-[327px] h-[404px] mx-4 sm:mx-0 bg-new-fill-ffffff rounded-[43px] shadow-drop-shadow-radius-24 border-none">
                 <CardContent className="p-0 h-full relative">
                   <img
                     className="absolute w-[65px] h-[65px] top-[30px] left-1/2 -translate-x-1/2 object-cover"
@@ -122,7 +122,7 @@ export const IntroCarousel = (): JSX.Element => {
         </div>
 
         {/* Pagination Dots */}
-        <div className="absolute w-full h-11 bottom-[230px] flex justify-center">
+        <div className="absolute w-full h-11 bottom-[200px] sm:bottom-[230px] flex justify-center">
           <div className="inline-flex items-center justify-center gap-2 px-3 py-2 relative rounded-[50px] backdrop-blur-[20px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(20px)_brightness(100%)]">
             <div className="absolute w-16 h-6 top-0 left-0 bg-new-fill-bfbfbf rounded-[100px] backdrop-blur-[25px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(25px)_brightness(100%)] shadow-material-blur" />
 
@@ -138,7 +138,7 @@ export const IntroCarousel = (): JSX.Element => {
 
         {/* Get Started Button */}
         <Button 
-          className="flex w-[272px] h-[49px] items-center justify-center gap-2 p-3 absolute bottom-[120px] left-1/2 -translate-x-1/2 bg-new-fill-74a4ee rounded-[25px] overflow-hidden border border-solid border-[#7fabef] shadow-[0px_7px_16px_#0000001a,0px_30px_30px_#00000017,0px_67px_40px_#0000000d,0px_120px_48px_#00000003,0px_187px_52px_transparent] hover:bg-new-fill-74a4ee"
+          className="flex w-full max-w-[272px] h-[49px] items-center justify-center gap-2 p-3 absolute bottom-[80px] sm:bottom-[120px] left-1/2 -translate-x-1/2 mx-4 sm:mx-0 bg-new-fill-74a4ee rounded-[25px] overflow-hidden border border-solid border-[#7fabef] shadow-[0px_7px_16px_#0000001a,0px_30px_30px_#00000017,0px_67px_40px_#0000000d,0px_120px_48px_#00000003,0px_187px_52px_transparent] hover:bg-new-fill-74a4ee"
           variant="default"
           onClick={handleGetStarted}
         >

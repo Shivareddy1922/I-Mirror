@@ -70,12 +70,14 @@ Create a backend server with the following endpoints:
 ### Environment Configuration
 
 1. Copy `.env.example` to `.env`
-2. Update `VITE_API_BASE_URL` with your backend URL
-3. For local testing with ngrok:
+2. Update `VITE_API_BASE_URL` with your backend URL:
+   - For Bolt preview: Use `/api` (relative path)
+   - For local development with ngrok:
    ```bash
    ngrok http 3001
    ```
-   Then update the URL in `.env`
+   Then update the URL in `.env` to your ngrok URL
+3. For production: Use your deployed backend domain
 
 ### Twilio Setup
 

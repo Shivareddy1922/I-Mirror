@@ -1,0 +1,190 @@
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .all-\[unset\] {
+    all: unset;
+  }
+}
+
+:root {
+  --background-blur-radius-4: ;
+  --background-blur-radius-40: ;
+  --body-base-font-family: "Inter", Helvetica;
+  --body-base-font-size: 16px;
+  --body-base-font-style: normal;
+  --body-base-font-weight: 400;
+  --body-base-letter-spacing: 0px;
+  --body-base-line-height: 140%;
+  --default-bold-body-font-family: "SF Pro Text", Helvetica;
+  --default-bold-body-font-size: 17px;
+  --default-bold-body-font-style: normal;
+  --default-bold-body-font-weight: 400;
+  --default-bold-body-letter-spacing: -0.40799999237060547px;
+  --default-bold-body-line-height: 22px;
+  --defaultsystemgreenlight: rgba(52, 199, 89, 1);
+  --drop-shadow-radius-24:
+    0px 11px 24px 0px rgba(0, 0, 0, 0.1), 0px 44px 44px 0px rgba(0, 0, 0, 0.09), 0px 100px 60px 0px rgba(
+      0,
+      0,
+      0,
+      0.05
+    ), 0px 178px 71px 0px rgba(0, 0, 0, 0.01), 0px 278px 78px 0px rgba(
+      0,
+      0,
+      0,
+      0
+    );
+  --heading-font-family: "Inter", Helvetica;
+  --heading-font-size: 24px;
+  --heading-font-style: normal;
+  --heading-font-weight: 600;
+  --heading-letter-spacing: -0.48px;
+  --heading-line-height: 120.00000762939453%;
+  --inkdarkest: rgba(9, 10, 10, 1);
+  --inklight: rgba(108, 112, 114, 1);
+  --inklighter: rgba(114, 119, 122, 1);
+  --primarybase: rgba(107, 78, 255, 1);
+  --inter-regular-font-family: "Inter", Helvetica;
+  --inter-regular-font-size: 92px;
+  --inter-regular-font-style: normal;
+  --inter-regular-font-weight: 400;
+  --inter-regular-letter-spacing: 0px;
+  --inter-regular-line-height: normal;
+  --label-colorlightprimary: rgba(0, 0, 0, 1);
+  --material-blur: ;
+  --new-fill-000000: rgba(0, 0, 0, 1);
+  --new-fill-74a4ee: rgba(116, 164, 238, 1);
+  --new-fill-bfbfbf: rgba(191, 191, 191, 0.44);
+  --new-fill-ffffff: rgba(255, 255, 255, 1);
+  --new-stroke-style: rgba(108, 161, 239, 1);
+  --new-fill-3a3cb9: rgba(58, 60, 185, 1);
+  --new-fill-4d1bf1: rgba(77, 27, 241, 1);
+  --regular-none-medium-font-family: "Inter", Helvetica;
+  --regular-none-medium-font-size: 16px;
+  --regular-none-medium-font-style: normal;
+  --regular-none-medium-font-weight: 500;
+  --regular-none-medium-letter-spacing: 0px;
+  --regular-none-medium-line-height: 16px;
+  --regular-none-regular-font-family: "Inter", Helvetica;
+  --regular-none-regular-font-size: 16px;
+  --regular-none-regular-font-style: normal;
+  --regular-none-regular-font-weight: 400;
+  --regular-none-regular-letter-spacing: 0px;
+  --regular-none-regular-line-height: 16px;
+  --regular-normal-regular-font-family: "Inter", Helvetica;
+  --regular-normal-regular-font-size: 16px;
+  --regular-normal-regular-font-style: normal;
+  --regular-normal-regular-font-weight: 400;
+  --regular-normal-regular-letter-spacing: 0px;
+  --regular-normal-regular-line-height: 24px;
+  --single-line-body-base-font-family: "Inter", Helvetica;
+  --single-line-body-base-font-size: 16px;
+  --single-line-body-base-font-style: normal;
+  --single-line-body-base-font-weight: 400;
+  --single-line-body-base-letter-spacing: 0px;
+  --single-line-body-base-line-height: 100%;
+  --skylight: rgba(227, 229, 229, 1);
+  --skywhite: rgba(255, 255, 255, 1);
+  --tiny-normal-regular-font-family: "Inter", Helvetica;
+  --tiny-normal-regular-font-size: 12px;
+  --tiny-normal-regular-font-style: normal;
+  --tiny-normal-regular-font-weight: 400;
+  --tiny-normal-regular-letter-spacing: 0px;
+  --tiny-normal-regular-line-height: 16px;
+  --title-2-font-family: "Inter", Helvetica;
+  --title-2-font-size: 32px;
+  --title-2-font-style: normal;
+  --title-2-font-weight: 700;
+  --title-2-letter-spacing: 0px;
+  --title-2-line-height: 36px;
+  --title-3-font-family: "Inter", Helvetica;
+  --title-3-font-size: 24px;
+  --title-3-font-style: normal;
+  --title-3-font-weight: 700;
+  --title-3-letter-spacing: 0px;
+  --title-3-line-height: 32px;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+
+    --card: transparent;
+    --card-foreground: 222.2 47.4% 11.2%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 215 20.2% 65.1%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
+
+    --muted: 223 47% 11%;
+    --muted-foreground: 215.4 16.3% 56.9%;
+
+    --accent: 216 34% 17%;
+    --accent-foreground: 210 40% 98%;
+
+    --popover: 224 71% 4%;
+    --popover-foreground: 215 20.2% 65.1%;
+
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+
+    --card: transparent;
+    --card-foreground: 213 31% 91%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 1.2%;
+
+    --secondary: 222.2 47.4% 11.2%;
+    --secondary-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 216 34% 17%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}

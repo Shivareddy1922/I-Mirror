@@ -1,0 +1,179 @@
+{
+  "nodes": [
+    {
+      "id": "src/screens/SplashScreen/SplashScreen.tsx",
+      "label": "SplashScreen",
+      "routes": [
+        "/*",
+        "/splash"
+      ],
+      "dataModelId": "682:535",
+      "isRoot": true
+    },
+    {
+      "id": "src/screens/IntroCarousel/IntroCarousel.tsx",
+      "label": "IntroCarousel",
+      "routes": [
+        "/intro"
+      ]
+    },
+    {
+      "id": "src/screens/Home/Home.tsx",
+      "label": "Home",
+      "routes": [
+        "/home"
+      ]
+    },
+    {
+      "id": "src/routes/LoginSignup/screens/LoginSignup.tsx",
+      "label": "LoginSignup",
+      "routes": [
+        "/login"
+      ]
+    },
+    {
+      "id": "src/routes/Enterotp/screens/Enterotp.tsx",
+      "label": "Enterotp",
+      "routes": [
+        "/enterotp"
+      ]
+    },
+    {
+      "id": "src/routes/SetupProfile/screens/SetupProfile.tsx",
+      "label": "SetupProfile",
+      "routes": [
+        "/setup-profile"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "src/screens/SplashScreen/SplashScreen.tsx:11:6-to-src/screens/IntroCarousel/IntroCarousel.tsx",
+      "source": "src/screens/SplashScreen/SplashScreen.tsx",
+      "target": "src/screens/IntroCarousel/IntroCarousel.tsx",
+      "data": {
+        "viaRoute": "/intro",
+        "trigger": {
+          "element": "navigate(\"/intro\")",
+          "line": 11,
+          "endLine": 11,
+          "column": 6,
+          "endColumn": 24,
+          "sourceFile": "src/screens/SplashScreen/SplashScreen.tsx"
+        }
+      }
+    },
+    {
+      "id": "src/screens/IntroCarousel/IntroCarousel.tsx:86:4-to-src/routes/LoginSignup/screens/LoginSignup.tsx",
+      "source": "src/screens/IntroCarousel/IntroCarousel.tsx",
+      "target": "src/routes/LoginSignup/screens/LoginSignup.tsx",
+      "data": {
+        "viaRoute": "/login",
+        "trigger": {
+          "element": "navigate('/login')",
+          "line": 86,
+          "endLine": 86,
+          "column": 4,
+          "endColumn": 22,
+          "sourceFile": "src/screens/IntroCarousel/IntroCarousel.tsx"
+        }
+      }
+    },
+    {
+      "id": "src/routes/LoginSignup/screens/LoginSignup.tsx:17:6-to-src/routes/Enterotp/screens/Enterotp.tsx",
+      "source": "src/routes/LoginSignup/screens/LoginSignup.tsx",
+      "target": "src/routes/Enterotp/screens/Enterotp.tsx",
+      "data": {
+        "viaRoute": "/enterotp",
+        "trigger": {
+          "element": "navigate('/enterotp')",
+          "line": 17,
+          "endLine": 17,
+          "column": 6,
+          "endColumn": 27,
+          "sourceFile": "src/routes/LoginSignup/screens/LoginSignup.tsx"
+        }
+      }
+    },
+    {
+      "id": "src/routes/Enterotp/screens/Enterotp.tsx:34:4-to-src/routes/LoginSignup/screens/LoginSignup.tsx",
+      "source": "src/routes/Enterotp/screens/Enterotp.tsx",
+      "target": "src/routes/LoginSignup/screens/LoginSignup.tsx",
+      "data": {
+        "viaRoute": "/login",
+        "trigger": {
+          "element": "navigate('/login')",
+          "line": 34,
+          "endLine": 34,
+          "column": 4,
+          "endColumn": 22,
+          "sourceFile": "src/routes/Enterotp/screens/Enterotp.tsx"
+        }
+      }
+    },
+    {
+      "id": "src/routes/Enterotp/screens/Enterotp.tsx:39:6-to-src/routes/SetupProfile/screens/SetupProfile.tsx",
+      "source": "src/routes/Enterotp/screens/Enterotp.tsx",
+      "target": "src/routes/SetupProfile/screens/SetupProfile.tsx",
+      "data": {
+        "viaRoute": "/setup-profile",
+        "trigger": {
+          "element": "navigate('/setup-profile')",
+          "line": 39,
+          "endLine": 39,
+          "column": 6,
+          "endColumn": 32,
+          "sourceFile": "src/routes/Enterotp/screens/Enterotp.tsx"
+        }
+      }
+    },
+    {
+      "id": "src/routes/SetupProfile/screens/SetupProfile.tsx:20:4-to-src/routes/Enterotp/screens/Enterotp.tsx",
+      "source": "src/routes/SetupProfile/screens/SetupProfile.tsx",
+      "target": "src/routes/Enterotp/screens/Enterotp.tsx",
+      "data": {
+        "viaRoute": "/enterotp",
+        "trigger": {
+          "element": "navigate('/enterotp')",
+          "line": 20,
+          "endLine": 20,
+          "column": 4,
+          "endColumn": 25,
+          "sourceFile": "src/routes/SetupProfile/screens/SetupProfile.tsx"
+        }
+      }
+    },
+    {
+      "id": "src/routes/SetupProfile/screens/SetupProfile.tsx:24:4-to-src/screens/Home/Home.tsx",
+      "source": "src/routes/SetupProfile/screens/SetupProfile.tsx",
+      "target": "src/screens/Home/Home.tsx",
+      "data": {
+        "viaRoute": "/home",
+        "trigger": {
+          "element": "navigate('/home')",
+          "line": 24,
+          "endLine": 24,
+          "column": 4,
+          "endColumn": 21,
+          "sourceFile": "src/routes/SetupProfile/screens/SetupProfile.tsx"
+        }
+      }
+    },
+    {
+      "id": "src/routes/SetupProfile/screens/SetupProfile.tsx:28:4-to-src/screens/Home/Home.tsx",
+      "source": "src/routes/SetupProfile/screens/SetupProfile.tsx",
+      "target": "src/screens/Home/Home.tsx",
+      "data": {
+        "viaRoute": "/home",
+        "trigger": {
+          "element": "navigate('/home')",
+          "line": 28,
+          "endLine": 28,
+          "column": 4,
+          "endColumn": 21,
+          "sourceFile": "src/routes/SetupProfile/screens/SetupProfile.tsx"
+        }
+      }
+    }
+  ]
+}
